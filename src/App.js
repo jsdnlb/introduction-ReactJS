@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import "./App.css";
+import tasks from "./sample/tasks.json";
+import Tasks from "./components/Tasks";
 
-class HelloWorld extends Component {
+/* class HelloWorld extends Component {
   state = {
     show: true,
   };
@@ -27,7 +29,7 @@ class HelloWorld extends Component {
         
     }
   }
-}
+} */
 
 /* function HelloWorld(props) {
   return (
@@ -39,11 +41,24 @@ class HelloWorld extends Component {
   );
 } */
 
-class App extends Component {
+/* class App extends Component {
   render() {
     return (
       <div>
         This is my new Component: <HelloWorld myText="Nombre: Daniel" ocupation="CEO" /> <HelloWorld myText="Nickname: jsdnlb" ocupation="RRHH" />{" "}
+      </div>
+    );
+  }
+} */
+
+class App extends Component {
+  state = {
+    tasks: tasks,
+  };
+  render() {
+    return (
+      <div>
+        <Tasks tasks={this.state.tasks} />
       </div>
     );
   }
