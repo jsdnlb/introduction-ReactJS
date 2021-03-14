@@ -1,10 +1,8 @@
 import React, { Component } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import "./css/Task.css";
 
 class Task extends Component {
-
-  
   StyleComptleted() {
     return {
       fontSize: "20px",
@@ -24,28 +22,25 @@ class Task extends Component {
     };
   }
 
-  changeStyle = () =>{
-    console.log("🚀 ~ file: Task.js ~ line 27 ~ Task ~ this.props.task.done", this.props.task.done)
-  }
+  changeStyle = () => {
+    console.log("🚀 ~ file: Task.js ~ line 27 ~ Task ~ this.props.task.done", this.props.task.done);
+  };
 
   render() {
     Task.propTypes = {
-        task: PropTypes.object.isRequired 
-}
+      task: PropTypes.object.isRequired,
+    };
     const { task } = this.props;
     return (
       <div style={this.StyleComptleted()}>
         {task.title} - {task.description}
-        <input type="checkbox" />
-        <button onClick={this.changeStyle} style={this.StyleEnabled()}>
+        <input type="checkbox" onChange={this.props.checkDone.bind(this, task.id)} />
+        <button onClick={this.props.deleteTask.bind(this, task.id)} style={this.StyleEnabled()}>
           X
         </button>
       </div>
     );
   }
-
- 
-
 }
 
 export default Task;
